@@ -1,0 +1,20 @@
+<div class="section-2">
+    <div class="container w-container">
+        <h1 class="heading-2" style="text-align:center;">CSV FileImporter</h1>
+    </div>
+    <div class="w-container">
+        <div class="enter-init-value w-form">
+            <%= form_tag( { controller: "users", action: "confirmuser" }, method: "get", style:"width: 50%;margin: auto;") do %>
+                <label for="useremail">User Email</label>
+                <input class="w-input" id="useremail" maxlength="256" name="useremail" placeholder="example@email.com" required="required" type="text" >
+                <label for="userpwd">User Password</label>
+                <input class="w-input" id="userpwd" maxlength="256" name="userpwd" placeholder="User Password" required="required" type="password" >
+                <input class="w-button" data-wait="Please wait..." type="submit" value="SignIn" style="width:100%;">
+                <h5 style="text-align:center;">
+                Create New Account?
+                <a href="signup" >SignUp</a>
+                </h5>
+            <% end %>
+        </div>
+    </div>
+</div>

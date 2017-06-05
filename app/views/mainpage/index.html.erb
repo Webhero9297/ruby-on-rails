@@ -1,0 +1,95 @@
+<%= stylesheet_link_tag    'mainpage' %>
+<div class="w-nav" data-animation="default" data-collapse="medium" data-duration="400">
+    <div class="w-container">
+        <a class="w-nav-brand" href="#"></a>
+        <nav class="w-nav-menu" role="navigation">
+        <div  class="w-nav-link" ><%= session[:useremail] %></div>
+        <a class="w-nav-link" href="/users/signin">sign up</a>
+        </nav>
+        <div class="w-nav-button">
+            <div class="w-icon-nav-menu"></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+  <h1>Property</h1>
+  <%= form_tag({:action => 'upload'}, :multipart => true) do %>
+    <%= file_field 'upload', 'csvfile' %>
+    <%= submit_tag( "Upload", :class=>"btn btn-success submit_button" ) %>
+  <% end %>
+</div>
+<div class="section2">
+    <h1 class="heading2ext">CSV FileImporter</h1>
+    <div class="w-container-ext">
+        <table border=1 cellpadding=0 cellspacing=0 >
+            <tr>
+                <td align=center>property_no</td>
+                <td align=center>property_url</td>
+                <td align=center>photo_url</td>
+                <td align=center>property_street</td>
+                <td align=center>property_city</td>
+                <td align=center>property_state</td>
+                <td align=center>page_views</td>
+                <td align=center>geo_location</td>
+                <td align=center>date_available</td>
+                <td align=center>general_features</td>
+                <td align=center>outdoor_features</td>
+                <td align=center>indoor_features</td>
+                <td align=center>beds</td>
+                <td align=center>baths</td>
+                <td align=center>car_space</td>
+                <td align=center>price</td>
+                <td align=center>bond</td>
+                <td align=center>property_type</td>
+                <td align=center>agent_name</td>
+                <td align=center>agency_name</td>
+                <td align=center>agent_address</td>
+                <td align=center>property_heading</td>
+                <td align=center>property_desc</td>
+                <td align=center>inpection_time</td>
+                <td align=center>floorplan</td>
+                <td align=center>crawl_date_time</td>
+                <td align=center>CSV file Name</td>
+            </tr>
+            <% n = 0 %>
+            <% if @csvdatarow %>
+                <% @csvdatarow.each do |row| %>
+                    <tr>
+                        <% n = n + 1 %>
+                        <td><%= n %></td>
+                        <td><%= row[:property_url] %></td>
+                        <td><%= row[:photo_url] %></td>
+                        <td><%= row[:property_street] %></td>
+                        <td><%= row[:property_city] %></td>
+                        <td><%= row[:property_state] %></td>
+                        <td><%= row[:page_views] %></td>
+                        <td><%= row[:geo_location] %></td>
+                        <td><%= row[:latitude] + "," + row[:longitude] %></td>
+                        <td><%= row[:general_features] %></td>
+                        <td><%= row[:outdoor_features] %></td>
+                        <td><%= row[:indoor_features] %></td>
+                        <td><%= row[:beds] %></td>
+                        <td><%= row[:baths] %></td>
+                        <td><%= row[:car_space] %></td>
+                        <td><%= row[:price] %></td>
+                        <td><%= row[:bond] %></td>
+                        <td><%= row[:property_type] %></td>
+                        <td><%= row[:agent_name] %></td>
+                        <td><%= row[:agency_name] %></td>
+                        <td><%= row[:agent_address] %></td>
+                        <td><%= row[:property_heading] %></td>
+                        <td><%= row[:property_desc] %></td>
+                        <td><%= row[:inpection_time] %></td>
+                        <td><%= row[:floorplan] %></td>
+                        <td><%= row[:crawl_date_time] %></td>
+                        <td><%= row[:uploaded_file_name] %></td>
+                    </tr>
+                <% end %>
+            <% else %>
+                <tr>
+                    <td colspan="27"><h4 class="heading2ext">No Data</h3></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+</div>
